@@ -1,5 +1,4 @@
-import React from "react";
-import { MdShoppingCart, MdAccountBalanceWallet } from "react-icons/md";
+import { MdShoppingCart } from "react-icons/md";
 const Header = () => {
   return (
     <div>
