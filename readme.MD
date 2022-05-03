@@ -1,0 +1,1 @@
+This is a typescript project using ethers js to demonstrate the basic principles of an eCommerce website that allows users to pay for goods using cryptocurrency.
