@@ -1,12 +1,19 @@
 import Header from "./components/Header";
 import Homepage from "./components/Homepage";
-import { useState } from "react";
-import Web3 from "web3";
-import React from "react";
+import React, { useState } from "react";
 import { ethers } from "ethers";
 import { contractAddress, contractABI } from "./contract-details";
 
-//  export const AppContext = React.createContext();
+interface Props {
+  handlePay: React.FormEventHandler;
+  bill: Number;
+  cash: React.MouseEventHandler<HTMLButtonElement>;
+  connectWallet: React.MouseEventHandler<HTMLButtonElement>;
+  userAccount: string;
+  walletConnected: boolean;
+}
+
+export const TokenContext = React.createContext({} as Props);
 
 function App() {
   let [bill, setBill] = useState(0);
@@ -14,8 +21,10 @@ function App() {
   let [walletConnected, setWalletConnected] = useState(false);
   const merchant = "0x49Df6596D72973EF711e8b61F6b74660302cf86E";
 
-  const connectWallet = async () => {
+  const connectWallet: React.MouseEventHandler = async (e) => {
+    e.preventDefault();
     if (window.ethereum) {
+      console.log("connecting waallet");
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
@@ -37,7 +46,8 @@ function App() {
     return payContract;
   };
 
-  const cash: React.MouseEventHandler = () => {
+  const cash: React.MouseEventHandler = (e) => {
+    e.preventDefault();
     let items = document.querySelectorAll<HTMLInputElement>("input.item-input");
     let price = 0;
     for (let i = 0; i < items.length; i++) {
@@ -81,17 +91,21 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Header />
-      <Homepage
-        bill={bill}
-        cash={cash}
-        userAccount={userAccount}
-        walletConnected={walletConnected}
-        connectWallet={connectWallet}
-        handlePay={handlePay}
-      />
-    </div>
+    <TokenContext.Provider
+      value={{
+        bill,
+        cash,
+        userAccount,
+        walletConnected,
+        connectWallet,
+        handlePay,
+      }}
+    >
+      <div>
+        <Header />
+        <Homepage />
+      </div>
+    </TokenContext.Provider>
   );
 }
 

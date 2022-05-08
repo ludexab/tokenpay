@@ -5,26 +5,16 @@ import tortoise from "../images/tortoise.png";
 import mortar from "../images/mortar.png";
 import bird from "../images/bird.png";
 import horse from "../images/horse.png";
-// import {App} from "./App";
+import { useContext } from "react";
+import { TokenContext } from "../App";
+import { shortenAddress } from "../utils/ShortenAddress";
 
-interface Props {
-  handlePay: React.FormEventHandler;
-  bill: Number;
-  cash: React.MouseEventHandler<HTMLButtonElement>;
-  connectWallet: React.MouseEventHandler<HTMLButtonElement>;
-  userAccount: string;
-  walletConnected: boolean;
-}
 const dollarSign = " $";
 
-const Homepage = ({
-  handlePay,
-  bill,
-  cash,
-  userAccount,
-  walletConnected,
-  connectWallet,
-}: Props) => {
+const Homepage = () => {
+  const { handlePay, bill, cash, userAccount, walletConnected, connectWallet } =
+    useContext(TokenContext);
+
   return (
     <div className="bg-gradient-to-r from-gray-800 via-red-100 to-gray-400 justify-center items-center">
       <div className="flex justify-center items-center">
@@ -37,8 +27,11 @@ const Homepage = ({
           </button>
         )}
         {walletConnected && (
-          <button className="py-3 px-3 rounded-full bg-blue-800 m-3 font-bold text-2xl text-white">
-            {userAccount}
+          <button
+            disabled
+            className="py-3 px-3 rounded-full bg-blue-800 m-3 font-bold text-2xl text-white"
+          >
+            {shortenAddress(userAccount)}
           </button>
         )}
       </div>
@@ -143,7 +136,7 @@ const Homepage = ({
           <div className="flex justify-right items-right">
             <label className="grid grid-cols-2 font-bold bg-blue-500 text-2xl text-center text-white p-2 rounded-full">
               <FaDollarSign className=" w-10 h-10 text-white p-1 justify-self-center" />
-              {bill.toString()}
+              {bill?.toString()}
             </label>
           </div>
           <div className="flex justify-left items-left">
