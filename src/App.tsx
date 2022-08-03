@@ -19,7 +19,7 @@ function App() {
   let [bill, setBill] = useState(0);
   let [userAccount, setUserAccount] = useState("");
   let [walletConnected, setWalletConnected] = useState(false);
-  const merchant = "0x49Df6596D72973EF711e8b61F6b74660302cf86E";
+  const merchant = "0xA8244A1E9A604ed138E4E6c9317c4213a6F540c9";
 
   const connectWallet: React.MouseEventHandler = async (e) => {
     e.preventDefault();
@@ -62,24 +62,24 @@ function App() {
     try {
       const payContract = getPayContract();
       const pAmount = ethers.utils.parseEther(amount.toString());
-      await window.ethereum.request({
-        method: "eth_sendTransaction",
-        params: [
-          {
-            from: userAccount,
-            to: merchant,
-            gas: "0x5208", //21000 GWEI
-            value: pAmount._hex,
-          },
-        ],
-      });
+      // await window.ethereum.request({
+      //   method: "eth_sendTransaction",
+      //   params: [
+      //     {
+      //       from: userAccount,
+      //       to: merchant,
+      //       gas: "0x5208", //21000 GWEI
+      //     },
+      //   ],
+      // });
 
-      const payHash = (await payContract).functions.pay(pAmount);
+      const payHash = (await payContract).functions.makePayment(pAmount);
       console.log("txnHash loading ");
       (await payHash).wait();
       console.log("payment successful");
       process.exit(0);
     } catch (error) {
+      console.log(error);
       alert("Error, please ensure your wallet is connected");
       process.exit(1);
     }

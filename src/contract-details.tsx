@@ -1,4 +1,4 @@
-import abi from "./Pay.json";
+import abi from "./PaymentProcessor.json";
 
-export const contractAddress = "0x0a0e523ef4dc35e64d28a788b8480081423c467e";
-export const contractABI = abi;
+export const contractAddress = "0xDc0A7FeA65dEe8c4946dd099Beb7e13397DA5607";
+export const contractABI = abi.abi;
