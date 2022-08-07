@@ -86,7 +86,7 @@
           "type": "uint256"
         }
       ],
-      "name": "Approve",
+      "name": "approve",
       "outputs": [
         {
           "internalType": "bool",
@@ -98,7 +98,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IPai.sol\":\"IPai\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IPai.sol\":{\"keccak256\":\"0xfd0158741d98fe178a6baaca45c77645c5ccc0e6758ceea17963d631ffffc438\",\"license\":\"UNLICENCED\",\"urls\":[\"bzz-raw://545498b88b1c4f8b6bab7292a483e8f1857850666c96d74e1247b4c1f82001a2\",\"dweb:/ipfs/QmQv9Zyv2L5648TDayvEv414ZhD4Kwmi23ZBVfGtfqLFfv\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IPai.sol\":\"IPai\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IPai.sol\":{\"keccak256\":\"0x5e6ca1cb7814ba3115e979fe3d6ae4cd7ad92a934ca33025655ad1a068175b6f\",\"license\":\"UNLICENCED\",\"urls\":[\"bzz-raw://48263ad2c812de0da57347eeaa7237bee2f6dfac2e2b8d2bc6e20711a351c99b\",\"dweb:/ipfs/QmWAPhCyZkpdn7NBKhqutoS1sCNTwnLHiyXn2ZTfBht3hi\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -106,7 +106,7 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "//SPDX-License-Identifier: UNLICENCED\r\npragma solidity ^0.8.0;\r\n\r\ninterface IPai{\r\n    function balanceOf(address owner) external view returns(uint);\r\n    function transfer(address to, uint amount) external returns(bool);\r\n    function transferFrom(address from, address to, uint amount) external returns(bool);\r\n    function Approve(address spender, uint amount) external returns(bool);\r\n}",
+  "source": "//SPDX-License-Identifier: UNLICENCED\r\npragma solidity ^0.8.0;\r\n\r\ninterface IPai{\r\n    function balanceOf(address owner) external view returns(uint);\r\n    function transfer(address to, uint amount) external returns(bool);\r\n    function transferFrom(address from, address to, uint amount) external returns(bool);\r\n    function approve(address spender, uint amount) external returns(bool);\r\n}",
   "sourcePath": "C:\\Users\\boss\\Documents\\tokenpay\\smart-contract\\contracts\\IPai.sol",
   "ast": {
     "absolutePath": "project:/contracts/IPai.sol",
@@ -480,12 +480,12 @@
             "visibility": "external"
           },
           {
-            "functionSelector": "90ec57f1",
+            "functionSelector": "095ea7b3",
             "id": 37,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "Approve",
+            "name": "approve",
             "nameLocation": "326:7:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
@@ -604,7 +604,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.8",
-  "updatedAt": "2022-08-03T02:20:12.566Z",
+  "updatedAt": "2022-08-07T11:26:27.038Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

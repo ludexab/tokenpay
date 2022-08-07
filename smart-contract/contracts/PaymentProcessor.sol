@@ -20,7 +20,7 @@ contract PaymentProcessor {
     }
 
     function makePayment(uint _amount) public returns(bool){
-        pai.transfer(merchant, _amount);
+        pai.transferFrom(msg.sender, merchant, _amount);
         return true;
     }
 

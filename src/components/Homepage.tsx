@@ -117,7 +117,7 @@ const Homepage = () => {
           </div>
           <div className="px-6 pt-2 pb-1">
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-              <input className="item-input" type="checkbox" value={70} />
+              <input className="item-input" type="checkbox" value={200} />
               {`${dollarSign}2,000`}
             </span>
           </div>

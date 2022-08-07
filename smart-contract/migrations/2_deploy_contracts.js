@@ -6,11 +6,11 @@ let paiAddress;
 module.exports = async function (deployer, network, accounts) {
     await deployer.deploy(Pai);
     const pai = await Pai.deployed();
-    await pai.transfer("0xD7926488dBB8c8AF9eae42F8c86e7CdDA41ffB0d", web3.utils.toWei("150","ether"))
+    await pai.transfer("0xaC47Ef21De155b2fCce8Ef4e2Eb281729cE99Ab8", web3.utils.toWei("500","ether"));
     paiAddress = pai.address;
 
     const [merchant, _] = accounts;
-    console.log(`merchant address is ====> ${merchant}`)
+    console.log(`merchant address is ====> ${merchant}`);
 
     await deployer.deploy(PaymentProcessor, merchant, paiAddress );
 

@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import Homepage from "./components/Homepage";
 import React, { useState } from "react";
 import { ethers } from "ethers";
-import { contractAddress, contractABI } from "./contract-details";
+import { payContractAddress, payContractABI, paiContractABI, paiContractAddress } from "./contract-details";
 
 interface Props {
   handlePay: React.FormEventHandler;
@@ -19,7 +19,7 @@ function App() {
   let [bill, setBill] = useState(0);
   let [userAccount, setUserAccount] = useState("");
   let [walletConnected, setWalletConnected] = useState(false);
-  const merchant = "0xA8244A1E9A604ed138E4E6c9317c4213a6F540c9";
+  const merchant = "0xf40072D5D56dd8C6964a11a23D0186c2b64491DF";
 
   const connectWallet: React.MouseEventHandler = async (e) => {
     e.preventDefault();
@@ -39,11 +39,22 @@ function App() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const payContract = new ethers.Contract(
-      contractAddress,
-      contractABI,
+      payContractAddress,
+      payContractABI,
       signer
     );
     return payContract;
+  };
+
+  const getPaiContract = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const paiContract = new ethers.Contract(
+      paiContractAddress,
+      paiContractABI,
+      signer
+    );
+    return paiContract;
   };
 
   const cash: React.MouseEventHandler = (e) => {
@@ -61,26 +72,25 @@ function App() {
   const payBill = async (amount: number) => {
     try {
       const payContract = getPayContract();
+      const paiContract = getPaiContract();
+      const payAddress = (await payContract).address
       const pAmount = ethers.utils.parseEther(amount.toString());
-      // await window.ethereum.request({
-      //   method: "eth_sendTransaction",
-      //   params: [
-      //     {
-      //       from: userAccount,
-      //       to: merchant,
-      //       gas: "0x5208", //21000 GWEI
-      //     },
-      //   ],
-      // });
+      const custbal = await( (await paiContract).functions.balanceOf(userAccount));
+      console.log(`typeof custbal = ${typeof(custbal)}, custbal value = ${ethers.utils.formatEther(custbal.toString())}`);
+      //console.log(ethers.utils.pacustbal);
 
-      const payHash = (await payContract).functions.makePayment(pAmount);
-      console.log("txnHash loading ");
-      (await payHash).wait();
-      console.log("payment successful");
-      process.exit(0);
+      //  Approve payment
+      // const approve = (await paiContract).functions.approve(payAddress, pAmount);
+      // (await approve).wait();
+      
+      // // Make payment
+      // const payHash = (await payContract).functions.makePayment(pAmount);
+      // console.log("txnHash loading ");
+      // (await payHash).wait();
+      // alert("payment successful.");
     } catch (error) {
       console.log(error);
-      alert("Error, please ensure your wallet is connected");
+      alert("Error making payment, please ensure your wallet is connected and try again.");
       process.exit(1);
     }
   };
