@@ -1,6 +1,6 @@
 # TokenPay
 
-![A Live chess game](frontend/src/components/images/chessino-live.jpg)
+![Landing page](project-interface-images/tokenpay.png)
 #
 A web3 eCommerce project where users shop and pay for goods using cryptocurrency.
 
